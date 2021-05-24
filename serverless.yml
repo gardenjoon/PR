@@ -1,0 +1,25 @@
+SLS_DEBUG: "*"
+service: tsserverless
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ap-northeast-2
+
+functions:
+  worldtime:
+    handler: src/currentTime.handler
+    events:
+      - http:
+          path: /
+          method: get
+  stockprice:
+    handler: src/stockPrice.handler
+    events:
+      - http:
+          path: /
+          method: post
