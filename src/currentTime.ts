@@ -4,8 +4,8 @@ const handler: Handler = async (event: any, context: Context) => {
   const now = new Date();
   const year =now.getFullYear();
   const month = now.getMonth() + 1;
-  const date = now.getDate();
-  const day = now.getDay();
+  let date = now.getDate();
+  let day = now.getDay();
   const days:any= {0 : '일', 1 : '월', 2 : '화', 3 : '수', 4 : '목', 5 : '금', 6 : '토'}
   const minutes = now.getMinutes();
   const seconds = now.getSeconds();
