@@ -1,14 +1,14 @@
 import { Handler, Context } from "aws-lambda";
 
-const worldtime: Handler = async (event: any, context: Context) => {
-  let now = new Date();
-  let year =now.getFullYear();
-  let month = now.getMonth() + 1;
-  let date = now.getDate();
-  let day = now.getDay();
-  let days:any= {0 : '일', 1 : '월', 2 : '화', 3 : '수', 4 : '목', 5 : '금', 6 : '토'}
-  let minutes = now.getMinutes();
-  let seconds = now.getSeconds();
+const handler: Handler = async (event: any, context: Context) => {
+  const now = new Date();
+  const year =now.getFullYear();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+  const day = now.getDay();
+  const days:any= {0 : '일', 1 : '월', 2 : '화', 3 : '수', 4 : '목', 5 : '금', 6 : '토'}
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
   
   interface strings {
     [key:string] : number;
@@ -41,7 +41,7 @@ const worldtime: Handler = async (event: any, context: Context) => {
       day =+ 6
     }
   };
-  let time = {
+  const time = {
     "country":event.queryStringParameters.country,
     "year":year,
     "month":month,
@@ -59,4 +59,4 @@ const worldtime: Handler = async (event: any, context: Context) => {
   return response
 };
 
-export { worldtime };
+export default { handler };
